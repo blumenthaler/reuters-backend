@@ -17,7 +17,7 @@ app.get('/api/articles', (req, res) => {
     // for now, dummy data
     res.send({articles: [
         {id: 1, author: 'Alex B', content: 'This is an article I wrote'},
-        {id: 2, author: 'someone else', content: "Another article, about finance or something."}
+        {id: 2, author: 'Martin Scorsese', content: "Another article, about movies and their cultural value"}
     ]})
 })
 
