@@ -1,0 +1,23 @@
+{
+  "name": "reuters-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blumenthaler/reuters-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blumenthaler/reuters-backend/issues"
+  },
+  "homepage": "https://github.com/blumenthaler/reuters-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
