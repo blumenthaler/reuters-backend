@@ -1,6 +1,12 @@
 const express = require('express')
 const app = express()
+app.use(express.json())
+
+const scraper = require('./scraper')
 const port = process.env.PORT || 3000
+
+
+scraper.scraper()
 
 // app.get()
 // app.post()
@@ -10,8 +16,8 @@ const port = process.env.PORT || 3000
 
 // seed
 const articles = [
-    {id: 1, author: 'Alex B', content: 'This is an article I wrote'},
-    {id: 2, author: 'Martin Scorsese', content: "Another article, about movies and their cultural value"}
+    {id: 1, title: 'An Article', content: 'This is an article I wrote'},
+    {id: 2, title: "Martin Scorsese's Favorite Marvel Movies", content: "Another article, about movies and their cultural value"}
 ]
 
 // Root
