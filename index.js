@@ -1,3 +1,4 @@
+const Joi = require('joi')
 const express = require('express')
 const app = express()
 app.use(express.json())
@@ -26,16 +27,40 @@ app.get('/', (req, res) => {
 })
 
 // Articles
-// Index: ollection of articles, scraped from Reuters homepage
+// Index: collection of articles, scraped from Reuters homepage
 app.get('/api/articles', (req, res) => {
     res.send({articles})
 })
 
 // Get one article by id
 app.get('/api/articles/:id', (req, res) => {
-    const article = articles.find(article => article.id === parseInt(req.params.id))
+    const article = articles.find(article => article.id === parseInt(req.params.id)) 
     if (!article) res.status(404).send('Article with given id not found')
     res.send(article)
+    
+})
+
+app.post('/api/articles', (req, res) => {
+    const schema = {
+        title: Joi.string().min(4).required(),
+        content: Joi.string().min(4).required()
+    }
+    const result = Joi.validate(req.body, schema)
+
+    if (result.error) {
+        res.status(400).send(result.error)
+        return;
+    }
+    else {
+        const article = {
+            // placeholder for articles
+            id: articles.length + 1,
+            title: req.body.title,
+            content: req.body.content
+        }
+        articles.push(article)
+        res.send(article)
+    }
     
 })
 

@@ -48,4 +48,6 @@ const scraper = () => {
         })
 }
 
+scraper()
+
 exports.scraper = scraper
