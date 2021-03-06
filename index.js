@@ -41,14 +41,10 @@ app.get('/api/articles/:id', (req, res) => {
 })
 
 app.post('/api/articles', (req, res) => {
-    const schema = {
-        title: Joi.string().min(4).required(),
-        content: Joi.string().min(4).required()
-    }
-    const result = Joi.validate(req.body, schema)
-
-    if (result.error) {
-        res.status(400).send(result.error)
+    const result = validateArticle(req.body)
+    const {error} = result
+    if (error) {
+        res.status(400).send(error.details[0].message)
         return;
     }
     else {
@@ -63,5 +59,13 @@ app.post('/api/articles', (req, res) => {
     }
     
 })
+
+const validateArticle = article => {
+    const schema = {
+        title: Joi.string().min(4).required(),
+        content: Joi.string().min(4).required()
+    }
+    return Joi.validate(article, schema)
+} 
 
 app.listen(port, () => console.log(`Listening on port ${port}...`))
