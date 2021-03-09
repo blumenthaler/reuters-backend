@@ -1,6 +1,9 @@
 const rp = require('request-promise');
+const fetch = require("node-fetch");
 const URL = 'https://www.reuters.com/'
 const $ = require('cheerio');
+
+const API_URL = "http://localhost:3000/"
 
 let title, final
 let content = []
@@ -30,13 +33,13 @@ const scraper = () => {
                     }
                     final = content.join('\n')
                     // add article to database
-                    // const sendable = {
-                    //     id: 3,
-                    //     title,
-                    //     content: final
-                    // }
+                    const sendable = {
+                        title,
+                        content: final
+                    }
                     console.log(title)
                     console.log(final)
+                    sendTopStory(sendable)
                  
                 })
                 .catch(error => {
@@ -46,6 +49,16 @@ const scraper = () => {
         .catch(error => {
             console.log(error)
         })
+}
+
+const sendTopStory = articleData => {
+    return fetch(API_URL + "api/articles", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(articleData)
+    }).then(resp => resp.json())
+    .then(data => console.log("Success: " + data))
+    .catch(error => console.log(error))
 }
 
 scraper()

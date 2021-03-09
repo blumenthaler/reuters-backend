@@ -6,9 +6,6 @@ app.use(express.json())
 const scraper = require('./scraper')
 const port = process.env.PORT || 3000
 
-
-scraper.scraper()
-
 // app.get()
 // app.post()
 // app.put()
@@ -41,10 +38,12 @@ app.get('/api/articles/:id', (req, res) => {
 })
 
 app.post('/api/articles', (req, res) => {
+    console.log(res.body)
     const result = validateArticle(req.body)
     const {error} = result
     if (error) {
         res.status(400).send(error.details[0].message)
+        console.log(error)
         return;
     }
     else {
