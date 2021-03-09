@@ -1,8 +1,8 @@
 const rp = require('request-promise');
 const fetch = require("node-fetch");
-const URL = 'https://www.reuters.com/'
 const $ = require('cheerio');
 
+const REUTERS_URL = 'https://www.reuters.com/'
 const API_URL = "http://localhost:3000/"
 
 let title, final
@@ -10,11 +10,11 @@ let content = []
 
 
 const scraper = () => {
-    rp(URL)
+    rp(REUTERS_URL)
         .then(html => {
             // gets link for topstory article
             const link = $('h2 > a', html)[1].attribs.href
-            const full = URL + link
+            const full = REUTERS_URL + link
             // console.log(full)
             rp (full)
                 .then(html => {
