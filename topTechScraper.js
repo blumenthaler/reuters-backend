@@ -16,15 +16,22 @@ const topStoryScraper = () => {
             const link = $('.story-content > a', html)[0].attribs.href
             const full = REUTERS_URL + link
             console.log(link)
-        })
+        
 //             // console.log(full)
-//             rp (full)
-//                 .then(html => {
-//                     // get article's headline
-//                     title = $('h1', html)[0].children[0].data
+            rp (full)
+                .then(html => {
+                    // get article's headline
+                    title = $('h1', html)[0].children[0].data
+                    console.log(title)
+            
+            
+           
 
-//                     // get article content
-//                     const contentParagraphs = $('.Paragraph-paragraph-2Bgue.ArticleBody-para-TD_9x', html)
+//                   // get article content
+                    const contentParagraphs = $('.Paragraph-paragraph-2Bgue.ArticleBody-para-TD_9x', html)
+                    console.log(contentParagraphs)
+                })
+        })
 //                     for (const property in contentParagraphs) {
 //                         if (contentParagraphs[property].children) {
 //                             const firstChild = contentParagraphs[property].children[0]
