@@ -9,7 +9,7 @@ let title, final
 let content = []
 
 
-const scraper = () => {
+const topStoryScraper = () => {
     rp(REUTERS_URL)
         .then(html => {
             // gets link for topstory article
@@ -61,6 +61,6 @@ const sendTopStory = articleData => {
     .catch(error => console.log(error))
 }
 
-scraper()
+topStoryScraper()
 
-exports.scraper = scraper
+exports.topStoryScraper = topStoryScraper

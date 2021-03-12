@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 
-const scraper = require('./scraper')
+const scraper = require('./topStoryScraper')
 const port = process.env.PORT || 3000
 
 // app.get()
@@ -20,7 +20,7 @@ const articles = [
 
 // Root
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.send('This is the Web Scraper API...\n Glad you could make it!')
 })
 
 // Articles
@@ -34,7 +34,6 @@ app.get('/api/articles/:id', (req, res) => {
     const article = articles.find(article => article.id === parseInt(req.params.id)) 
     if (!article) res.status(404).send('Article with given id not found')
     res.send(article)
-    
 })
 
 app.post('/api/articles', (req, res) => {
