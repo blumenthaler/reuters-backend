@@ -3,7 +3,8 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 
-const scraper = require('./topStoryScraper')
+// const scraper = require('./topStoryScraper')
+// const tech = require('./topTechScraper')
 const port = process.env.PORT || 3000
 
 // app.get()
@@ -46,6 +47,7 @@ app.post('/api/articles', (req, res) => {
         return;
     }
     else {
+        console.log("Success!")
         const article = {
             // placeholder for articles
             id: articles.length + 1,

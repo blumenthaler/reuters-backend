@@ -1,7 +1,8 @@
 const rp = require('request-promise');
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 const $ = require('cheerio');
 
+const sendTopStory = require('./sendTopStory')
 const REUTERS_URL = 'https://www.reuters.com/technology/'
 const API_URL = "http://localhost:3000/"
 
@@ -40,7 +41,7 @@ const topTechScraper = () => {
                     }
                     console.log(title)
                     console.log(final)
-                    sendTopStory(sendable)
+                    sendTopStory.sendTopStory(sendable)
                 })
                 .catch(error => {
                     console.log(error)
@@ -51,15 +52,7 @@ const topTechScraper = () => {
             })
 }
 
-const sendTopStory = articleData => {
-    return fetch(API_URL + "api/articles", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(articleData)
-    }).then(resp => resp.json())
-    .then(data => console.log("Success: " + data))
-    .catch(error => console.log(error))
-}
+
 
 topTechScraper()
 
