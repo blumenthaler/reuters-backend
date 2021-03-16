@@ -2,7 +2,7 @@ const rp = require('request-promise');
 // const fetch = require("node-fetch");
 const $ = require('cheerio');
 
-const sendTopStory = require('./sendTopStory')
+const sendArticle = require('./sendArticle')
 const REUTERS_URL = 'https://www.reuters.com/technology/'
 const API_URL = "http://localhost:3000/"
 
@@ -41,7 +41,7 @@ const topTechScraper = () => {
                     }
                     console.log(title)
                     console.log(final)
-                    sendTopStory.sendTopStory(sendable)
+                    sendArticle.sendArticle(sendable)
                 })
                 .catch(error => {
                     console.log(error)
@@ -51,7 +51,6 @@ const topTechScraper = () => {
                 console.log(error)
             })
 }
-
 
 
 topTechScraper()

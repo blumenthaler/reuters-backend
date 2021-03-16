@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const API_URL = "http://localhost:3000/"
 
-const sendTopStory = articleData => {
+const sendArticle = articleData => {
     return fetch(API_URL + "api/articles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -11,4 +11,4 @@ const sendTopStory = articleData => {
     .catch(error => console.log(error))
 }
 
-exports.sendTopStory = sendTopStory
+exports.sendArticle = sendArticle
